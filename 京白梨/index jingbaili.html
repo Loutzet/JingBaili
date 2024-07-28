@@ -24,9 +24,21 @@
             border-radius: 5px;
         }
     </style>
+    <style>
+        #fruit {
+            width: 100px;
+            height: 100px;
+            background-image: url('images/R-C.99a32755904b3c9a9b966298717a9922.jpeg');
+            background-size: cover;
+            position: absolute;
+            top: 1000px;
+            left: 500px;
+        }
+    </style>
 </head>
 
 <body>
+    <div id="fruit"></div>
     <script>
         var name = document.write('<h1>京白梨首页</h1>')
     </script>
@@ -47,6 +59,32 @@
     } else {
         alert('failed')
     }">games</button>
+    <button class="green" onclick=" 
+    alert ('you can tap the photo to delete them.') 
+    var fruit = document.getElementById('fruit');
+    function randomPosition() {
+      var x = Math.random() * (window.innerWidth - fruit.offsetWidth);
+      var y = Math.random() * (window.innerHeight - fruit.offsetHeight);
+      fruit.style.left = x + 'px';
+      fruit.style.top = y + 'px';
+    }
+    function initGame() {
+      randomPosition();
+      fruit.addEventListener('click', cutFruit);
+    }
+  
+    // 切水果
+    function cutFruit() {
+      fruit.remove();
+      // 重新生成一个新的水果
+      setTimeout(function() {
+        document.body.appendChild(fruit);
+        randomPosition();
+      }, 1000);
+    }
+  
+    // 开始游戏
+    initGame();">delete fruit game</button>
     <script>
         //The smart helper 
         var Jingbaili = '欢迎来到京白梨';
