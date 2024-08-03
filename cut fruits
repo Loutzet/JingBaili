@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>切水果</title>
+    <style>
+        #fruit {
+            width: 200px;
+            height: 200px;
+            background-image: url('fruit.png'); 
+/* 请确保fruit.png图片位于与此HTML文件相同的目录下 */
+            background-size: cover;
+            position: absolute;
+            top: 200px;
+            left: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="fruit"></div>
+
+    <script>
+        var fruit = document.getElementById('fruit');
+
+        function randomPosition() {
+            var x = Math.random() * (window.innerWidth - fruit.offsetWidth);
+            var y = Math.random() * (window.innerHeight - fruit.offsetHeight);
+            fruit.style.left = x + 'px';
+            fruit.style.top = y + 'px';
+        }
+
+        function initGame() {
+            randomPosition();
+            fruit.addEventListener('click', cutFruit);
+        }
+
+        function cutFruit() {
+            fruit.remove();
+            setTimeout(function() {
+                document.body.appendChild(fruit);
+                randomPosition();
+            }, 1000);
+        }
+
+        initGame();
+    </script>
+</body>
+</html>
